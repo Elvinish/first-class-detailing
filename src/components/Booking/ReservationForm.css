@@ -1,0 +1,110 @@
+.reservation {
+  gap: 1.5rem;
+}
+
+@media (min-width: 880px) {
+  .reservation {
+    grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.2fr);
+  }
+}
+
+.reservation__form {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(15, 23, 42, 0.95);
+  background: radial-gradient(
+      circle at top left,
+      rgba(56, 189, 248, 0.1),
+      transparent 60%
+    ),
+    var(--color-bg-soft);
+  padding: 1.5rem 1.25rem;
+  font-size: 0.9rem;
+}
+
+.reservation__row {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 720px) {
+  .reservation__row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.reservation__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.reservation__field label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-muted);
+}
+
+.reservation__field input,
+.reservation__field select,
+.reservation__field textarea {
+  border-radius: 10px;
+  border: 1px solid #0f172a;
+  background: #020617;
+  color: var(--color-text);
+  padding: 0.55rem 0.6rem;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.reservation__field input:focus,
+.reservation__field select:focus,
+.reservation__field textarea:focus {
+  border-color: var(--color-accent-soft);
+}
+
+.reservation__error {
+  font-size: 0.75rem;
+  color: #f97373;
+}
+
+.reservation__actions {
+  margin-top: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.reservation__reset {
+  background: transparent;
+  border: none;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.reservation__reset:hover {
+  color: var(--color-accent-soft);
+}
+
+.reservation__success {
+  margin-top: 0.7rem;
+  font-size: 0.8rem;
+  color: #4ade80;
+}
+
+.reservation__summary {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(15, 23, 42, 0.95);
+  background: #020617;
+  padding: 1.1rem 1rem;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.reservation__summary h3 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}

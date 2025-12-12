@@ -1,0 +1,32 @@
+.section {
+  max-width: var(--layout-width);
+  margin: auto;
+  padding: 3rem 0;
+}
+
+.section__inner {
+  max-width: var(--layout-width);
+  margin: 0 auto;
+}
+
+.section__header {
+  margin-bottom: 2rem;
+}
+
+.section__eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.section__title {
+  font-size: 2rem;
+  margin: 0.4rem 0 0.3rem;
+}
+
+.section__kicker {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  max-width: 32rem;
+}
