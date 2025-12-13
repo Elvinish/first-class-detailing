@@ -43,6 +43,8 @@
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--color-muted);
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .reservation__field input,

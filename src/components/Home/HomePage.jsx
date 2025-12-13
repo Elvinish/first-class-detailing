@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./HomePage.css";
 import Button from "../Shared/Button";
 import Section from "../Shared/Section";
@@ -57,7 +58,7 @@ export default function HomePage() {
 
       {/* OUR SERVICES (для якоря из navbar) */}
       <Section
-        id="services-home"
+        id="services"
         title="Our Services"
         kicker="We offer a range of detailing services to keep your car looking its best."
       >
@@ -71,8 +72,8 @@ export default function HomePage() {
               Full exterior wash and detail to keep paint glossy and protected.
             </p>
             <p className="home-services__price">$99</p>
-            <Button as="a" href="#booking" size="sm">
-              Book Now
+            <Button as="a" href="#services" size="sm">
+              See more
             </Button>
           </article>
 
@@ -85,8 +86,8 @@ export default function HomePage() {
               Deep interior clean for seats, carpets and all high-touch areas.
             </p>
             <p className="home-services__price">$99</p>
-            <Button as="a" href="#booking" size="sm">
-              Book Now
+            <Button as="a" href="#services" size="sm">
+              See more
             </Button>
           </article>
 
@@ -99,8 +100,8 @@ export default function HomePage() {
               Long-term paint protection and extra gloss with ceramic coating.
             </p>
             <p className="home-services__price">$30</p>
-            <Button as="a" href="#booking" size="sm">
-              Book Now
+            <Button as="a" href="#services" size="sm">
+              See more
             </Button>
           </article>
         </div>
@@ -113,7 +114,7 @@ export default function HomePage() {
       <BookingPage />
 
       {/* CONTACT US + MAP */}
-      <Section id="contact-home" title="Contact Us">
+      <Section id="contact" title="Contact Us">
         <div className="home-contact-box">
           <div className="home-contact">
             <div className="home-contact__col home-contact__col--info">

@@ -18,7 +18,7 @@ export default function Header() {
         </a>
 
         <nav className="site-header__nav">
-          <a href="#services-home" className="site-header__link">
+          <a href="#services" className="site-header__link">
             Services
           </a>
           <a href="#gallery" className="site-header__link">

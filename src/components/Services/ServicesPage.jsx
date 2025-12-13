@@ -15,28 +15,41 @@ export default function ServicesPage() {
       <div className="services-grid">
         {SERVICES.map((service) => (
           <article key={service.id} className="services-card">
-            <header className="services-card__header">
-              <h3>{service.name}</h3>
-              <p className="services-card__price">From ${service.fromPrice}</p>
-            </header>
+            <div className="services-card__media">
+              <img
+                className="services-card__img"
+                src={service.image}
+                alt={service.name}
+                loading="lazy"
+              />
+            </div>
 
-            <p className="services-card__short">{service.short}</p>
+            <div className="services-card__body">
+              <header className="services-card__header">
+                <h3 className="services-card__title">{service.name}</h3>
+                <p className="services-card__price">
+                  From ${service.fromPrice}
+                </p>
+              </header>
 
-            <ul className="services-card__list">
-              {service.features.map((feature) => (
-                <li key={feature}>• {feature}</li>
-              ))}
-            </ul>
+              <p className="services-card__short">{service.short}</p>
 
-            <Button
-              as={NavLink}
-              to="/booking"
-              variant="ghost"
-              size="sm"
-              className="services-card__btn"
-            >
-              Reserve this package
-            </Button>
+              <ul className="services-card__list">
+                {service.features.map((feature) => (
+                  <li key={feature}>• {feature}</li>
+                ))}
+              </ul>
+
+              <Button
+                as={NavLink}
+                to="/booking"
+                variant="ghost"
+                size="sm"
+                className="services-card__btn"
+              >
+                Book now
+              </Button>
+            </div>
           </article>
         ))}
       </div>
