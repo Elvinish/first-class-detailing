@@ -41,8 +41,8 @@ export default function ServicesPage() {
               </ul>
 
               <Button
-                as={NavLink}
-                to="/booking"
+                as="a"
+                href="/#booking"
                 variant="ghost"
                 size="sm"
                 className="services-card__btn"

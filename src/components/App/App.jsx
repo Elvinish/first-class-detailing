@@ -6,6 +6,9 @@ import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
 
 import HomePage from "../Home/HomePage";
+import ServicesPage from "../Services/ServicesPage"; // ✅ проверь путь
+
+import { Routes, Route } from "react-router-dom";
 
 export default function App() {
   useScrollToTop();
@@ -16,8 +19,10 @@ export default function App() {
         <Header />
 
         <main className="app__main">
-          {/* Вся страница — внутри HomePage */}
-          <HomePage />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/services" element={<ServicesPage />} />
+          </Routes>
         </main>
 
         <Footer />

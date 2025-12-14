@@ -10,6 +10,7 @@ export const SERVICES = [
   {
     id: "express",
     name: "Express Exterior Wash",
+    image: "/assets/hero-car.jpg",
     short: "Perfect when you just need the car to look fresh again.",
     features: [
       "Pre-rinse & foam bath",
@@ -21,6 +22,7 @@ export const SERVICES = [
   {
     id: "interior",
     name: "Interior Deep Clean",
+    image: "/assets/interior-detail.jpg",
     short: "For family cars, rideshare, kids & pets.",
     features: [
       "Full vacuum (trunk included)",
@@ -32,6 +34,7 @@ export const SERVICES = [
   {
     id: "full",
     name: "Full Detail",
+    image: "/assets/full-detail.jpg",
     short: "Showroom package: interior + exterior & gloss protection.",
     features: [
       "Exterior decontamination & clay bar",
@@ -43,6 +46,7 @@ export const SERVICES = [
   {
     id: "ceramic",
     name: "Ceramic Coating",
+    image: "/assets/ceramic-coating.jpg",
     short: "Long-term protection & insane gloss.",
     features: [
       "Multi-step paint correction (as needed)",

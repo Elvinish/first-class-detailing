@@ -9,7 +9,7 @@ export default function Header() {
     <header className="site-header">
       <div className="site-header__inner">
         {/* Лого ведёт к самому верху */}
-        <a href="#top" className="site-header__brand">
+        <a href="/#top" className="site-header__brand">
           <span className="site-header__logo-dot" />
           <span className="site-header__logo-text">
             {mainTitle}
@@ -18,17 +18,17 @@ export default function Header() {
         </a>
 
         <nav className="site-header__nav">
-          <a href="#services" className="site-header__link">
+          <a href="/#services" className="site-header__link">
             Services
           </a>
-          <a href="#gallery" className="site-header__link">
+          <a href="/#gallery" className="site-header__link">
             Gallery
           </a>
           {/* Booking убрали из навбара */}
         </nav>
 
         {/* Кнопка ведёт к секции бронирования/формы */}
-        <Button as="a" href="#booking" variant="primary" size="sm">
+        <Button as="a" href="/#booking" variant="primary" size="sm">
           Reserve now
         </Button>
       </div>
