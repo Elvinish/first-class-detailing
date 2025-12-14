@@ -5,32 +5,37 @@ export function useScrollToTop() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    // ✅ если есть якорь — ждем пока элемент появится и скроллим к нему
-    if (hash) {
-      let rafId = 0;
-      let tries = 0;
-
-      const tryScroll = () => {
-        const el = document.querySelector(hash);
-
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-          return;
-        }
-
-        // пробуем ~1 сек (60 кадров)
-        if (tries < 60) {
-          tries += 1;
-          rafId = requestAnimationFrame(tryScroll);
-        }
-      };
-
-      rafId = requestAnimationFrame(tryScroll);
-
-      return () => cancelAnimationFrame(rafId);
+    if (!hash) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
     }
 
-    // ✅ обычный переход без hash — наверх
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    let tries = 0;
+    let rafId = 0;
+
+    const tryScroll = () => {
+      const el = document.querySelector(hash);
+
+      if (el) {
+        // 1) первый скролл
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        // 2) повторный скролл — когда разметка стабилизируется
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 350);
+
+        return;
+      }
+
+      // ждём появления секции (до ~2 сек)
+      if (tries < 120) {
+        tries += 1;
+        rafId = requestAnimationFrame(tryScroll);
+      }
+    };
+
+    rafId = requestAnimationFrame(tryScroll);
+    return () => cancelAnimationFrame(rafId);
   }, [pathname, hash]);
 }
