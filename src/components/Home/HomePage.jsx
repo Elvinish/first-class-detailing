@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import "./HomePage.css";
 import Button from "../Shared/Button";
 import Section from "../Shared/Section";
+import ServiceCard from "./ServiceCard";
+import Lightbox from "../Shared/Lightbox";
+
 import {
   CONTACT_PHONE,
   CONTACT_EMAIL,
@@ -20,6 +23,7 @@ const HERO_IMAGES = [
 
 export default function HomePage() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [selected, setSelected] = useState(null);
 
   // простой автослайдер
   useEffect(() => {
@@ -67,47 +71,40 @@ export default function HomePage() {
         kicker="We offer a range of detailing services to keep your car looking its best."
       >
         <div className="home-services">
-          <article className="home-services__card">
-            <div className="home-services__image-wrap">
-              <img src="/assets/hero-car.jpg" alt="Exterior Detailing" />
-            </div>
-            <h3 className="home-services__title">Exterior Detailing</h3>
-            <p className="home-services__text">
-              Full exterior wash and detail to keep paint glossy and protected.
-            </p>
-            <p className="home-services__price">$99</p>
-            <Button as={Link} to="/services" size="sm">
-              See more
-            </Button>
-          </article>
+          <ServiceCard
+            image="/assets/hero-car.jpg"
+            title="Exterior Detailing"
+            text="Full exterior wash and detail to keep paint glossy and protected."
+            price="$99"
+            onImageClick={(src, alt) => setSelected({ src, alt })}
+          />
 
-          <article className="home-services__card">
-            <div className="home-services__image-wrap">
-              <img src="/assets/interior-detail.jpg" alt="Interior Detailing" />
-            </div>
-            <h3 className="home-services__title">Interior Detailing</h3>
-            <p className="home-services__text">
-              Deep interior clean for seats, carpets and all high-touch areas.
-            </p>
-            <p className="home-services__price">$99</p>
-            <Button as={Link} to="/services" size="sm">
-              See more
-            </Button>
-          </article>
+          <ServiceCard
+            image="/assets/interior-detail.jpg"
+            title="Interior Detailing"
+            text="Deep interior clean for seats, carpets and all high-touch areas."
+            price="$99"
+            onImageClick={(src, alt) => setSelected({ src, alt })}
+          />
 
-          <article className="home-services__card">
-            <div className="home-services__image-wrap">
-              <img src="/assets/ceramic-coating.jpg" alt="Ceramic Coating" />
-            </div>
-            <h3 className="home-services__title">Ceramic Coating</h3>
-            <p className="home-services__text">
-              Long-term paint protection and extra gloss with ceramic coating.
-            </p>
-            <p className="home-services__price">$30</p>
-            <Button as={Link} to="/services" size="sm">
-              See more
-            </Button>
-          </article>
+          <ServiceCard
+            image="/assets/ceramic-coating.jpg"
+            title="Ceramic Coating"
+            text="Long-term paint protection and extra gloss with ceramic coating."
+            price="$30"
+            onImageClick={(src, alt) => setSelected({ src, alt })}
+          />
+
+          <Lightbox
+            src={selected?.src}
+            alt={selected?.alt}
+            onClose={() => setSelected(null)}
+          />
+        </div>
+        <div className="home-services__cta">
+          <Button as={Link} to="/services" size="md">
+            See more
+          </Button>
         </div>
       </Section>
 

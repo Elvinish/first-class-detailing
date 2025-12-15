@@ -71,7 +71,8 @@
 
 .home-services {
   display: grid;
-  gap: 1.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
 }
 
 @media (min-width: 900px) {
@@ -79,42 +80,41 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
-
+/* 
 .home-services__card {
-  background-color: #ffffff;
-  border-radius: 16px;
-  padding: 1rem;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
-  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .home-services__image-wrap {
-  border-radius: 12px;
+  height: 220px; 
   overflow: hidden;
-  margin-bottom: 0.7rem;
+  border-radius: 16px; 
 }
 
 .home-services__image-wrap img {
   width: 100%;
-  display: block;
+  height: 100%;
   object-fit: cover;
-}
+  display: block;
+} */
 
-.home-services__title {
+/* .home-services__title {
   margin: 0.2rem 0 0.3rem;
   font-size: 1rem;
 }
 
+
 .home-services__text {
-  margin: 0 0 0.6rem;
-  color: #6b7280;
+  flex: 1; 
+  margin-bottom: 12px;
 }
 
+
 .home-services__price {
-  margin: 0 0 0.7rem;
-  font-weight: 600;
-}
+  margin-top: 0;
+} */
 
 /* ========== CONTACT + MAP ========== */
 
@@ -200,4 +200,15 @@
   justify-content: center;
   align-items: center;
   min-height: 220px;
+}
+/* 
+.home-services__card .btn {
+  margin-top: auto; 
+  align-self: flex-start; 
+} */
+
+.home-services__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
 }
