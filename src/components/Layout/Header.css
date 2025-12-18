@@ -72,3 +72,19 @@
   color: var(--color-text);
   border-color: var(--color-accent-soft);
 }
+
+@media (max-width: 640px) {
+  .site-header__nav {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header__inner {
+    justify-content: space-between;
+  }
+
+  .site-header__brand {
+    margin-right: 0;
+  }
+}
