@@ -23,6 +23,7 @@
 .section__title {
   font-size: 2rem;
   margin: 0.4rem 0 0.3rem;
+  color: aliceblue;
 }
 
 .section__kicker {
