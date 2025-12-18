@@ -29,3 +29,9 @@
 .service-card__text {
   flex: 1;
 }
+
+@media (max-width: 640px) {
+  .service-card__image-wrap {
+    border-radius: 0;
+  }
+}

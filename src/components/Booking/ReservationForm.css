@@ -21,6 +21,12 @@
   font-size: 0.9rem;
 }
 
+@media (max-width: 640px) {
+  .reservation__form {
+    border-radius: 0;
+  }
+}
+
 .reservation__row {
   display: grid;
   gap: 1rem;
