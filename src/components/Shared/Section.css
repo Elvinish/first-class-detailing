@@ -30,3 +30,12 @@
   color: var(--color-muted);
   max-width: 32rem;
 }
+
+@media (max-width: 640px) {
+  .section__title,
+  .section__kicker,
+  .section__eyebrow {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}

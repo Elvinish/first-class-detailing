@@ -46,18 +46,27 @@
   font-weight: 800;
   white-space: nowrap;
 }
+/* 
+@media (max-width: 640px) {
+  .service-card__image-wrap {
+    border-radius: 0;
+  }
+
+  .service-card__header,
+  .service-card__text {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+} */
 
 @media (max-width: 640px) {
   .service-card__image-wrap {
     border-radius: 0;
   }
-  .service-card__price {
-    margin-right: 10px;
-  }
-  .service-card__title {
-    margin-left: 10px;
-  }
+
+  .service-card__header,
   .service-card__text {
-    margin-left: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 }
