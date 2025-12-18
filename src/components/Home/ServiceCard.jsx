@@ -17,9 +17,12 @@ export default function ServiceCard({
         />
       </div>
 
-      <h3 className="service-card__title">{title}</h3>
+      <header className="service-card__header">
+        <h3 className="service-card__title">{title}</h3>
+        <p className="service-card__price">{price}</p>
+      </header>
+
       <p className="service-card__text">{text}</p>
-      <p className="service-card__price">{price}</p>
     </article>
   );
 }

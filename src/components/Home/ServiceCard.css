@@ -29,12 +29,35 @@
 .service-card__text {
   flex: 1;
 }
+.service-card__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.service-card__title {
+  margin: 0;
+}
+
+.service-card__price {
+  margin: 0;
+  font-weight: 800;
+  white-space: nowrap;
+}
 
 @media (max-width: 640px) {
   .service-card__image-wrap {
     border-radius: 0;
   }
   .service-card__price {
-    margin: auto;
+    margin-right: 10px;
+  }
+  .service-card__title {
+    margin-left: 10px;
+  }
+  .service-card__text {
+    margin-left: 5px;
   }
 }
