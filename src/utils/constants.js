@@ -76,4 +76,25 @@ export const GALLERY_ITEMS = [
     description: "Premium ceramic coating package.",
     image: "/assets/ceramic-coating.jpg",
   },
+  {
+    id: 4,
+    label: "Engine bay detail",
+    description:
+      "Deep engine bay cleaning and safe degreasing for a clean, like-new look.",
+    image: "/assets/engine-bay.jpg",
+  },
+  {
+    id: 5,
+    label: "Wheel & brake dust removal",
+    description:
+      "Thorough wheel, tire, and brake dust cleaning for a sharp, finished stance.",
+    image: "/assets/wheels-detail.jpg",
+  },
+  {
+    id: 6,
+    label: "Headlight restoration",
+    description:
+      "Before / after headlight restoration improving clarity, safety, and appearance.",
+    image: "/assets/headlight-restore.jpg",
+  },
 ];

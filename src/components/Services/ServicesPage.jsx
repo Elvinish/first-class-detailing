@@ -1,10 +1,12 @@
+import { useState } from "react";
 import "./ServicesPage.css";
 import Section from "../Shared/Section";
+import Lightbox from "../Shared/Lightbox";
 import { SERVICES } from "../../utils/constants";
 import Button from "../Shared/Button";
-import { NavLink } from "react-router-dom";
 
 export default function ServicesPage() {
+  const [selected, setSelected] = useState(null);
   return (
     <Section
       id="services"
@@ -21,6 +23,9 @@ export default function ServicesPage() {
                 src={service.image}
                 alt={service.name}
                 loading="lazy"
+                onClick={() =>
+                  setSelected({ src: service.image, alt: service.name })
+                }
               />
             </div>
 
@@ -53,6 +58,11 @@ export default function ServicesPage() {
           </article>
         ))}
       </div>
+      <Lightbox
+        src={selected?.src}
+        alt={selected?.alt}
+        onClose={() => setSelected(null)}
+      />
     </Section>
   );
 }

@@ -123,38 +123,45 @@ export default function HomePage() {
                 Book your detailing appointment today. We’ll confirm your time
                 and package as soon as possible.
               </p>
-
-              <div className="home-contact__info">
-                <div className="home-contact__item">
-                  <span className="home-contact__label">Phone</span>
-                  <span className="home-contact__value">{CONTACT_PHONE}</span>
-                </div>
-
-                <div className="home-contact__item">
-                  <span className="home-contact__label">Email</span>
-                  <span className="home-contact__value">{CONTACT_EMAIL}</span>
-                </div>
-
-                <div className="home-contact__item">
-                  <span className="home-contact__label">Address</span>
-                  <span className="home-contact__value">{CONTACT_ADDRESS}</span>
-                </div>
+              <div className="home-contact__item">
+                <span className="home-contact__label">Phone</span>
+                <span className="home-contact__value">
+                  <a
+                    className="home-contact__link"
+                    href={`tel:${CONTACT_PHONE}`}
+                  >
+                    {CONTACT_PHONE}
+                  </a>
+                </span>
               </div>
 
-              {/* <div className="home-contact__button">
-                <Button as="a" href="#booking" size="md">
-                  Book Now
-                </Button>
-              </div> */}
+              <div className="home-contact__item">
+                <span className="home-contact__label">Email</span>
+                <span className="home-contact__value">
+                  <a
+                    className="home-contact__link"
+                    href={`mailto:${CONTACT_EMAIL}`}
+                  >
+                    {CONTACT_EMAIL}
+                  </a>
+                </span>
+              </div>
+
+              <div className="home-contact__item">
+                <span className="home-contact__label">Address</span>
+                <span className="home-contact__value">{CONTACT_ADDRESS}</span>
+              </div>
             </div>
 
-            <div className="home-contact__col home-contact__col--map">
-              <div className="home-contact__map-placeholder">
-                <p>Google Maps placeholder</p>
-                <p style={{ fontSize: "0.75rem", opacity: 0.7 }}>
-                  Embed your real location map here later.
-                </p>
-              </div>
+            <div className="home-contact__map">
+              <iframe
+                title="First Class Auto Detailing Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2696.6045186619963!2d-122.31893052319717!3d47.47813569683923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549043725d30b2c9%3A0x919ded92e73b5ef9!2s1244%20S%20140th%20St%2C%20Burien%2C%20WA%2098168!5e0!3m2!1sen!2sus!4v1766037666103!5m2!1sen!2sus"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
         </div>
