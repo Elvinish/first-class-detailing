@@ -19,10 +19,9 @@
   box-shadow: 0 14px 34px rgba(15, 23, 42, 0.1);
 }
 
-/* Фото одинакового размера у всех карточек */
 .services-card__media {
   width: 100%;
-  aspect-ratio: 4 / 3; /* сделает как у правой — “большое фото” */
+  aspect-ratio: 4 / 3;
   background: #0b1220;
 }
 
@@ -32,6 +31,7 @@
   display: block;
   object-fit: cover;
   object-position: center;
+  cursor: pointer;
 }
 
 /* Весь текст + кнопка снизу */
