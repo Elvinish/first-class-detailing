@@ -34,4 +34,7 @@
   .service-card__image-wrap {
     border-radius: 0;
   }
+  .service-card__price {
+    margin: auto;
+  }
 }
