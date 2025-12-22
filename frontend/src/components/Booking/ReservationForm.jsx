@@ -3,6 +3,11 @@ import { SERVICES, VEHICLE_TYPES } from "../../utils/constants";
 import { useBooking } from "../../contexts/BookingContext";
 import { useBookingForm } from "../../hooks/useBookingForm";
 import Button from "../Shared/Button";
+import { buildTimeSlots, to12hLabel } from "../../utils/timeSlots";
+import Flatpickr from "react-flatpickr";
+import "flatpickr/dist/flatpickr.min.css";
+import { formatDateYMD } from "../../utils/dateFormat";
+import { useMemo } from "react";
 
 export default function ReservationForm() {
   const { createReservation, lastReservation } = useBooking();
@@ -16,6 +21,22 @@ export default function ReservationForm() {
     handleSubmit,
     resetForm,
   } = useBookingForm(createReservation);
+
+  const timeSlots = buildTimeSlots({
+    startHour: 0,
+    endHour: 24,
+    stepMinutes: 60,
+  });
+
+  const dateOptions = useMemo(
+    () => ({
+      dateFormat: "Y-m-d",
+      minDate: "today",
+      allowInput: false,
+      disableMobile: true,
+    }),
+    []
+  );
 
   return (
     <div className="reservation">
@@ -118,25 +139,36 @@ export default function ReservationForm() {
         <div className="reservation__row">
           <div className="reservation__field">
             <label htmlFor="date">Preferred date *</label>
-            <input
+            <Flatpickr
+              value={values.date ?? ""}
+              options={dateOptions}
+              onChange={(selectedDates) => {
+                const picked = selectedDates?.[0];
+                const dateStr = picked ? formatDateYMD(picked) : "";
+                handleChange({ target: { name: "date", value: dateStr } });
+              }}
               id="date"
               name="date"
-              type="date"
-              value={values.date}
-              onChange={handleChange}
+              placeholder="Select a date"
             />
             {errors.date && <p className="reservation__error">{errors.date}</p>}
           </div>
 
           <div className="reservation__field">
             <label htmlFor="time">Preferred time (optional)</label>
-            <input
+            <select
               id="time"
               name="time"
-              type="time"
               value={values.time}
               onChange={handleChange}
-            />
+            >
+              <option value="">Select a time (optional)</option>
+              {timeSlots.map((t) => (
+                <option key={t} value={t}>
+                  {to12hLabel(t)}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
@@ -194,7 +226,7 @@ export default function ReservationForm() {
           </p>
           <p>
             Preferred: {lastReservation.date}{" "}
-            {lastReservation.time && `at ${lastReservation.time}`}
+            {lastReservation.time && `at ${to12hLabel(lastReservation.time)}`}
           </p>
           {lastReservation.notes && <p>Notes: {lastReservation.notes}</p>}
         </aside>
