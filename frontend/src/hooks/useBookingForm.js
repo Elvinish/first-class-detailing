@@ -46,8 +46,10 @@ export function useBookingForm(onSubmit) {
 
     try {
       setSubmitting(true);
-      await onSubmit(values); // вызов функции из контекста
+      await onSubmit(values);
       setSubmitted(true);
+      setValues(initialValues);
+      setTimeout(() => setSubmitted(false), 5000);
     } finally {
       setSubmitting(false);
     }
