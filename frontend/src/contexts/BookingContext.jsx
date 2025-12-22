@@ -5,17 +5,34 @@ const BookingContext = createContext(null);
 export function BookingProvider({ children }) {
   const [lastReservation, setLastReservation] = useState(null);
 
-  // имитация "запроса", здесь можно будет подключить реальный backend
+  // Send reservation to backend API
   async function createReservation(data) {
-    console.log("Reservation request:", data);
-
-    setLastReservation({
+    // Map frontend fields -> backend fields
+    const payload = {
       ...data,
-      createdAt: new Date().toISOString(),
+      preferredDate: data.date,
+      preferredTime: data.time,
+    };
+
+    delete payload.date;
+    delete payload.time;
+
+    const response = await fetch("/api/reservations", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
     });
 
-    // задержка чтобы выглядело как запрос
-    await new Promise((resolve) => setTimeout(resolve, 400));
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.message || "Failed to create reservation");
+    }
+
+    setLastReservation(result);
+    return result;
   }
 
   const value = {
