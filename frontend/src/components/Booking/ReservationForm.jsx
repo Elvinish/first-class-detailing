@@ -6,7 +6,7 @@ import Button from "../Shared/Button";
 import { buildTimeSlots, to12hLabel } from "../../utils/timeSlots";
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
-import { formatDateYMD } from "../../utils/dateFormat";
+import { formatDateYMD, startOfToday } from "../../utils/dateFormat";
 import { useMemo } from "react";
 
 export default function ReservationForm() {
@@ -31,9 +31,13 @@ export default function ReservationForm() {
   const dateOptions = useMemo(
     () => ({
       dateFormat: "Y-m-d",
-      minDate: "today",
+      minDate: startOfToday(),
       allowInput: false,
       disableMobile: true,
+
+      onOpen: (selectedDates, dateStr, instance) => {
+        instance.set("minDate", startOfToday());
+      },
     }),
     []
   );
