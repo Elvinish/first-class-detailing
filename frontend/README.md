@@ -85,3 +85,5 @@ main.jsx # Entry point
 ## Youtube link
 
 https://youtube.com/shorts/KzvEN5vXp-0?feature=share
+
+Submitted for Stage 1 review
