@@ -1,0 +1,125 @@
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* mobile */
+  gap: 16px;
+  align-items: stretch;
+}
+
+@media (min-width: 640px) {
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* tablet */
+    gap: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* desktop */
+    gap: 24px;
+  }
+}
+
+.services-card {
+  /* display: flex; */
+  flex-direction: column;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.1);
+}
+
+.services-card__media {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #0b1220;
+}
+
+.services-card__img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  cursor: pointer;
+}
+
+/* Весь текст + кнопка снизу */
+.services-card__body {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  flex: 1;
+}
+
+.services-card__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.services-card__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.services-card__price {
+  margin: 0;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.services-card__short {
+  margin: 0 0 10px;
+  line-height: 1.5;
+  color: #526277;
+}
+
+/* список может быть разной длины — поэтому толкаем кнопку вниз */
+.services-card__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #526277;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.services-card__btn {
+  margin-top: 14px;
+  align-self: flex-start; /* если хочешь кнопку слева */
+}
+
+.home-services {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .services-card {
+    border-radius: 0;
+  }
+}
+
+@media (min-width: 640px) {
+  .home-services {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (min-width: 900px) {
+  .home-services {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+}

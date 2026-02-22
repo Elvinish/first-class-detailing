@@ -1,0 +1,20 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app__main {
+  flex: 1;
+}
+
+.app__not-found {
+  max-width: var(--layout-width);
+  margin: 4rem auto;
+  padding: 0 1.25rem;
+  text-align: center;
+}
+
+#booking {
+  scroll-margin-top: 90px;
+}

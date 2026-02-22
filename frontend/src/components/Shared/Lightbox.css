@@ -1,0 +1,55 @@
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+  animation: lbFade 160ms ease-out;
+}
+
+.lightbox__content {
+  position: relative;
+  max-width: min(900px, 92vw);
+  max-height: 86vh;
+  animation: lbPop 180ms ease-out;
+}
+
+.lightbox__img {
+  width: 100%;
+  height: auto;
+  max-height: 86vh;
+  border-radius: 16px;
+  display: block;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+}
+
+@keyframes lbFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lbPop {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

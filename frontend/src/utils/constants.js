@@ -1,0 +1,100 @@
+export const SITE_NAME = "First Class Auto Detailing";
+
+export const CONTACT_PHONE = "(425) 000-0000";
+export const CONTACT_EMAIL = "info@firstclassdetail.com";
+export const CONTACT_ADDRESS = "1234 Premium Wash Ave, Suite A, Your City, ST";
+
+export const VEHICLE_TYPES = ["Car", "SUV", "Truck", "Van", "Other"];
+
+export const SERVICES = [
+  {
+    id: "express",
+    name: "Express Exterior Wash",
+    image: "/assets/hero-car.jpg",
+    short: "Perfect when you just need the car to look fresh again.",
+    features: [
+      "Pre-rinse & foam bath",
+      "Hand wash & towel dry",
+      "Wheel faces & tire shine",
+    ],
+    fromPrice: 39,
+  },
+  {
+    id: "interior",
+    name: "Interior Deep Clean",
+    image: "/assets/interior-detail.jpg",
+    short: "For family cars, rideshare, kids & pets.",
+    features: [
+      "Full vacuum (trunk included)",
+      "Plastics, console & vents",
+      "Seats & mats shampoo (light to medium)",
+    ],
+    fromPrice: 119,
+  },
+  {
+    id: "full",
+    name: "Full Detail",
+    image: "/assets/full-detail.jpg",
+    short: "Showroom package: interior + exterior & gloss protection.",
+    features: [
+      "Exterior decontamination & clay bar",
+      "Machine polish (single-stage)",
+      "Spray sealant / ceramic booster",
+    ],
+    fromPrice: 249,
+  },
+  {
+    id: "ceramic",
+    name: "Ceramic Coating",
+    image: "/assets/ceramic-coating.jpg",
+    short: "Long-term protection & insane gloss.",
+    features: [
+      "Multi-step paint correction (as needed)",
+      "2–3 year ceramic coating",
+      "Hydrophobic glass & trim treatment",
+    ],
+    fromPrice: 549,
+  },
+];
+
+export const GALLERY_ITEMS = [
+  {
+    id: 1,
+    label: "Gloss enhancement",
+    description: "Before / after one-step machine polish & sealant.",
+    image: "/assets/hero-car.jpg",
+  },
+  {
+    id: 2,
+    label: "Interior reset",
+    description: "Full interior steam clean and protection.",
+    image: "/assets/interior-detail.jpg",
+  },
+  {
+    id: 3,
+    label: "Ceramic shine",
+    description: "Premium ceramic coating package.",
+    image: "/assets/ceramic-coating.jpg",
+  },
+  {
+    id: 4,
+    label: "Engine bay detail",
+    description:
+      "Deep engine bay cleaning and safe degreasing for a clean, like-new look.",
+    image: "/assets/engine-bay.jpg",
+  },
+  {
+    id: 5,
+    label: "Wheel & brake dust removal",
+    description:
+      "Thorough wheel, tire, and brake dust cleaning for a sharp, finished stance.",
+    image: "/assets/wheels-detail.jpg",
+  },
+  {
+    id: 6,
+    label: "Headlight restoration",
+    description:
+      "Before / after headlight restoration improving clarity, safety, and appearance.",
+    image: "/assets/headlight-restore.jpg",
+  },
+];
