@@ -1,6 +1,12 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+let resend = null;
+
+if (process.env.RESEND_API_KEY) {
+  resend = new Resend(process.env.RESEND_API_KEY);
+} else {
+  console.warn("[email] RESEND_API_KEY is missing — email sending disabled");
+}
 
 // Send admin email notification about new booking
 export async function sendBookingEmail(reservation) {
@@ -37,6 +43,10 @@ export async function sendBookingEmail(reservation) {
     ${notes ? `<p><strong>Notes:</strong> ${notes}</p>` : ""}
   `;
 
+  if (!resend) {
+    console.warn("[email] Resend not configured — skipping email");
+    return;
+  }
   const { data, error } = await resend.emails.send({ from, to, subject, html });
 
   if (error) {
