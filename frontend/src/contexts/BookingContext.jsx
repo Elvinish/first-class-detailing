@@ -7,8 +7,6 @@ export function BookingProvider({ children }) {
 
   // Send reservation to backend API
   async function createReservation(data) {
-    console.log("API URL:", import.meta.env.VITE_API_URL);
-
     // Map frontend fields -> backend fields
     const payload = {
       ...data,
