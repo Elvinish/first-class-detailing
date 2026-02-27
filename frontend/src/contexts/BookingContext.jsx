@@ -16,7 +16,7 @@ export function BookingProvider({ children }) {
 
     delete payload.date;
     delete payload.time;
-
+    // console.log("VITE_API_URL =", import.meta.env.VITE_API_URL);
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}/api/reservations`,
       {
