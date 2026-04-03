@@ -116,3 +116,48 @@
   font-size: 0.95rem;
   color: var(--color-text);
 }
+
+.reservation__estimate {
+  margin: 0;
+  padding: 0 16px;
+  border-radius: 12px;
+  background: #e5e7eb;
+  border: 1px solid #cbd5e1;
+
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+
+  transform: translateY(-8px);
+  transition: max-height 1500ms ease, opacity 500ms ease, transform 500ms ease,
+    margin 400ms ease, padding 400ms ease;
+}
+
+.reservation__estimate--visible {
+  margin: 16px 0;
+  padding: 16px;
+
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reservation__estimate-label {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.reservation__estimate-price {
+  margin: 6px 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.reservation__estimate-note {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+}

@@ -17,16 +17,16 @@ export function BookingProvider({ children }) {
     delete payload.date;
     delete payload.time;
     // console.log("VITE_API_URL =", import.meta.env.VITE_API_URL);
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/reservations`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      }
-    );
+
+    const API_BASE_URL = import.meta.env.VITE_API_URL || "";
+
+    const response = await fetch(`${API_BASE_URL}/api/reservations`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
 
     const result = await response.json();
 

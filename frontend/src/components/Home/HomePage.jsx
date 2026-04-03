@@ -5,6 +5,7 @@ import Button from "../Shared/Button";
 import Section from "../Shared/Section";
 import ServiceCard from "./ServiceCard";
 import Lightbox from "../Shared/Lightbox";
+import { SERVICES } from "../../utils/constants";
 
 import {
   CONTACT_PHONE,
@@ -71,29 +72,18 @@ export default function HomePage() {
         kicker="We offer a range of detailing services to keep your car looking its best."
       >
         <div className="home-services">
-          <ServiceCard
-            image="/assets/hero-car.jpg"
-            title="Exterior Detailing"
-            text="Full exterior wash and detail to keep paint glossy and protected."
-            price="$99"
-            onImageClick={(src, alt) => setSelected({ src, alt })}
-          />
-
-          <ServiceCard
-            image="/assets/interior-detail.jpg"
-            title="Interior Detailing"
-            text="Deep interior clean for seats, carpets and all high-touch areas."
-            price="$99"
-            onImageClick={(src, alt) => setSelected({ src, alt })}
-          />
-
-          <ServiceCard
-            image="/assets/ceramic-coating.jpg"
-            title="Ceramic Coating"
-            text="Long-term paint protection and extra gloss with ceramic coating."
-            price="$30"
-            onImageClick={(src, alt) => setSelected({ src, alt })}
-          />
+          {SERVICES.filter((service) =>
+            ["gold", "platinum", "ceramic"].includes(service.id)
+          ).map((service) => (
+            <ServiceCard
+              key={service.id}
+              image={service.image}
+              title={service.name}
+              text={service.short}
+              price={`From $${service.fromPrice}`}
+              onImageClick={(src, alt) => setSelected({ src, alt })}
+            />
+          ))}
 
           <Lightbox
             src={selected?.src}

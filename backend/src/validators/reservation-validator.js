@@ -3,15 +3,16 @@ import Joi from "joi";
 export const createReservationSchema = Joi.object({
   name: Joi.string().trim().min(2).max(60).required(),
   phone: Joi.string().trim().min(7).max(30).required(),
-  email: Joi.string().trim().email().allow("").optional(),
+  email: Joi.string().trim().email().required(),
 
   vehicle: Joi.string().trim().min(2).max(120).required(),
   vehicleType: Joi.string().trim().max(30).optional(),
 
   service: Joi.string().trim().required(), // we'll enforce allowed values later
+  estimatedTotal: Joi.number().positive().optional(),
 
   preferredDate: Joi.date().required(),
-  preferredTime: Joi.string().trim().max(10).allow("").optional(),
+  preferredTime: Joi.string().trim().max(10).required(),
 
   notes: Joi.string().trim().max(1000).allow("").optional(),
 });

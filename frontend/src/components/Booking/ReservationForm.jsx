@@ -12,6 +12,12 @@ import { useMemo } from "react";
 export default function ReservationForm() {
   const { createReservation, lastReservation } = useBooking();
 
+  const submitReservation = (formValues) =>
+    createReservation({
+      ...formValues,
+      estimatedTotal: estimatedPrice || undefined,
+    });
+
   const {
     values,
     errors,
@@ -20,7 +26,7 @@ export default function ReservationForm() {
     handleChange,
     handleSubmit,
     resetForm,
-  } = useBookingForm(createReservation);
+  } = useBookingForm(submitReservation);
 
   const timeSlots = buildTimeSlots({
     startHour: 0,
@@ -41,6 +47,10 @@ export default function ReservationForm() {
     }),
     []
   );
+
+  const selectedService = SERVICES.find((s) => s.id === values.service);
+
+  const estimatedPrice = selectedService?.prices?.[values.vehicleType] || null;
 
   return (
     <div className="reservation">
@@ -74,10 +84,9 @@ export default function ReservationForm() {
             )}
           </div>
         </div>
-
         <div className="reservation__row">
           <div className="reservation__field">
-            <label htmlFor="email">Email (optional)</label>
+            <label htmlFor="email">Email *</label>
             <input
               id="email"
               name="email"
@@ -86,6 +95,9 @@ export default function ReservationForm() {
               value={values.email}
               onChange={handleChange}
             />
+            {errors.email && (
+              <p className="reservation__error">{errors.email}</p>
+            )}
           </div>
 
           <div className="reservation__field">
@@ -103,7 +115,6 @@ export default function ReservationForm() {
             )}
           </div>
         </div>
-
         <div className="reservation__row">
           <div className="reservation__field">
             <label htmlFor="vehicleType">Vehicle type</label>
@@ -140,6 +151,23 @@ export default function ReservationForm() {
           </div>
         </div>
 
+        <div
+          className={`reservation__estimate ${
+            values.vehicleType && values.service
+              ? "reservation__estimate--visible"
+              : ""
+          }`}
+        >
+          <p className="reservation__estimate-label">Estimated Total</p>
+          <p className="reservation__estimate-price">
+            {estimatedPrice ? `$${estimatedPrice}` : "Contact for quote"}
+          </p>
+          <p className="reservation__estimate-note">
+            Final price may vary based on vehicle condition, pet hair, or
+            additional labor.
+          </p>
+        </div>
+
         <div className="reservation__row">
           <div className="reservation__field">
             <label htmlFor="date">Preferred date *</label>
@@ -159,23 +187,23 @@ export default function ReservationForm() {
           </div>
 
           <div className="reservation__field">
-            <label htmlFor="time">Preferred time (optional)</label>
+            <label htmlFor="time">Preferred time *</label>
             <select
               id="time"
               name="time"
               value={values.time}
               onChange={handleChange}
             >
-              <option value="">Select a time (optional)</option>
+              <option value="">Select a time</option>
               {timeSlots.map((t) => (
                 <option key={t} value={t}>
                   {to12hLabel(t)}
                 </option>
               ))}
             </select>
+            {errors.time && <p className="reservation__error">{errors.time}</p>}
           </div>
         </div>
-
         <div className="reservation__field">
           <label htmlFor="notes">
             Notes (kids, pets, stains, special requests...)
@@ -189,7 +217,6 @@ export default function ReservationForm() {
             placeholder="Tell us anything important about your vehicle."
           />
         </div>
-
         <div className="reservation__actions">
           <Button type="submit" disabled={submitting} variant="primary">
             {submitting ? "Sending request..." : "Submit reservation request"}
@@ -203,7 +230,6 @@ export default function ReservationForm() {
             Reset form
           </button>
         </div>
-
         {submitted && (
           <p className="reservation__success">
             Thank you! This is a demo — in production this form would send your

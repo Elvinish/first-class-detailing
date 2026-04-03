@@ -23,5 +23,15 @@ export function validateReservation(values) {
     errors.vehicle = "Tell us your vehicle model.";
   }
 
+  if (!values.email.trim()) {
+    errors.email = "Email is required.";
+  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+    errors.email = "Enter a valid email.";
+  }
+
+  if (!values.time) {
+    errors.time = "Select a preferred time.";
+  }
+
   return errors;
 }

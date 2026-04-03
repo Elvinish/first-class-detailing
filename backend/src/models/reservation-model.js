@@ -11,6 +11,8 @@ const reservationSchema = new mongoose.Schema(
 
     service: { type: String, required: true, trim: true },
 
+    estimatedTotal: { type: Number },
+
     preferredDate: { type: Date, required: true },
     preferredTime: { type: String, trim: true },
 

@@ -20,8 +20,9 @@
 
 @media (min-width: 900px) {
   .services-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr)); /* desktop */
-    gap: 24px;
+    grid-template-columns: repeat(2, minmax(460px, 520px));
+    justify-content: center;
+    gap: 36px;
   }
 }
 
@@ -36,7 +37,7 @@
 
 .services-card__media {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
   background: #0b1220;
 }
 
@@ -98,28 +99,8 @@
   align-self: flex-start; /* если хочешь кнопку слева */
 }
 
-.home-services {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
-
 @media (max-width: 640px) {
   .services-card {
     border-radius: 0;
-  }
-}
-
-@media (min-width: 640px) {
-  .home-services {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-  }
-}
-
-@media (min-width: 900px) {
-  .home-services {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
   }
 }

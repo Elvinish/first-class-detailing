@@ -4,56 +4,47 @@ export const CONTACT_PHONE = "(425) 000-0000";
 export const CONTACT_EMAIL = "info@firstclassdetail.com";
 export const CONTACT_ADDRESS = "1234 Premium Wash Ave, Suite A, Your City, ST";
 
-export const VEHICLE_TYPES = ["Car", "SUV", "Truck", "Van", "Other"];
+export const VEHICLE_TYPES = ["Sedan", "SUV", "Truck", "Van", "Other"];
 
 export const SERVICES = [
   {
-    id: "express",
-    name: "Express Exterior Wash",
-    image: "/assets/hero-car.jpg",
-    short: "Perfect when you just need the car to look fresh again.",
-    features: [
-      "Pre-rinse & foam bath",
-      "Hand wash & towel dry",
-      "Wheel faces & tire shine",
-    ],
-    fromPrice: 39,
-  },
-  {
-    id: "interior",
-    name: "Interior Deep Clean",
+    id: "gold",
+    name: "Gold",
     image: "/assets/interior-detail.jpg",
-    short: "For family cars, rideshare, kids & pets.",
+    short:
+      "Thorough interior cleaning designed to restore comfort and freshness",
     features: [
-      "Full vacuum (trunk included)",
-      "Plastics, console & vents",
-      "Seats & mats shampoo (light to medium)",
+      "Sedan: $239",
+      "SUV: $269",
+      "Minivan / Large Truck: $289",
+      "Pet hair extra: $39–$79",
     ],
-    fromPrice: 119,
+    fromPrice: 239,
+    prices: {
+      Sedan: 239,
+      SUV: 269,
+      Truck: 289,
+      Van: 289,
+    },
   },
   {
-    id: "full",
-    name: "Full Detail",
+    id: "platinum",
+    name: "Platinum",
     image: "/assets/full-detail.jpg",
-    short: "Showroom package: interior + exterior & gloss protection.",
+    short: "Complete interior & exterior detail for a true showroom finish",
     features: [
-      "Exterior decontamination & clay bar",
-      "Machine polish (single-stage)",
-      "Spray sealant / ceramic booster",
+      "Sedan: $299",
+      "SUV: $339",
+      "Minivan / Large Truck: $349",
+      "Pet hair extra: $39–$79",
     ],
-    fromPrice: 249,
-  },
-  {
-    id: "ceramic",
-    name: "Ceramic Coating",
-    image: "/assets/ceramic-coating.jpg",
-    short: "Long-term protection & insane gloss.",
-    features: [
-      "Multi-step paint correction (as needed)",
-      "2–3 year ceramic coating",
-      "Hydrophobic glass & trim treatment",
-    ],
-    fromPrice: 549,
+    fromPrice: 299,
+    prices: {
+      Sedan: 299,
+      SUV: 339,
+      Truck: 349,
+      Van: 349,
+    },
   },
 ];
 
