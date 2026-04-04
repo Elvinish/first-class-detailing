@@ -9,7 +9,6 @@ export const createReservationSchema = Joi.object({
   vehicleType: Joi.string().trim().max(30).optional(),
 
   service: Joi.string().trim().required(), // we'll enforce allowed values later
-  estimatedTotal: Joi.number().positive().optional(),
 
   preferredDate: Joi.date().required(),
   preferredTime: Joi.string().trim().max(10).required(),

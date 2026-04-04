@@ -31,7 +31,6 @@ export function useBookingForm(onSubmit) {
       return { ...prev, [name]: value };
     });
 
-    // очищаем ошибку для конкретного поля при изменении
     setErrors((prev) => ({ ...prev, [name]: "" }));
   }
 

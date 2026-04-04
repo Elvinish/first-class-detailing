@@ -20,12 +20,6 @@ export const SERVICES = [
       "Pet hair extra: $39–$79",
     ],
     fromPrice: 239,
-    prices: {
-      Sedan: 239,
-      SUV: 269,
-      Truck: 289,
-      Van: 289,
-    },
   },
   {
     id: "platinum",
@@ -39,12 +33,6 @@ export const SERVICES = [
       "Pet hair extra: $39–$79",
     ],
     fromPrice: 299,
-    prices: {
-      Sedan: 299,
-      SUV: 339,
-      Truck: 349,
-      Van: 349,
-    },
   },
 ];
 

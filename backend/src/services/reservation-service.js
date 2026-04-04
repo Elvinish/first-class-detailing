@@ -3,9 +3,14 @@ import {
   sendBookingEmail,
   sendCustomerConfirmationEmail,
 } from "../utils/email.js";
+import { calculatePrice } from "../utils/pricing.js";
 
 export async function createReservationService(payload) {
-  const saved = await createReservation(payload);
+  const estimatedTotal = calculatePrice(payload.service, payload.vehicleType);
+  const saved = await createReservation({
+    ...payload,
+    estimatedTotal,
+  });
 
   // Send email notification without blocking request
   sendBookingEmail(saved).catch((err) => {

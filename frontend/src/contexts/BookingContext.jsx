@@ -1,22 +1,22 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 
 const BookingContext = createContext(null);
 
 export function BookingProvider({ children }) {
-  const [lastReservation, setLastReservation] = useState(null);
-
   // Send reservation to backend API
   async function createReservation(data) {
     // Map frontend fields -> backend fields
     const payload = {
-      ...data,
+      name: data.name,
+      phone: data.phone,
+      email: data.email,
+      vehicle: data.vehicle,
+      vehicleType: data.vehicleType,
+      service: data.service,
       preferredDate: data.date,
       preferredTime: data.time,
+      notes: data.notes,
     };
-
-    delete payload.date;
-    delete payload.time;
-    // console.log("VITE_API_URL =", import.meta.env.VITE_API_URL);
 
     const API_BASE_URL = import.meta.env.VITE_API_URL || "";
 
@@ -34,12 +34,10 @@ export function BookingProvider({ children }) {
       throw new Error(result.message || "Failed to create reservation");
     }
 
-    setLastReservation(result);
     return result;
   }
 
   const value = {
-    lastReservation,
     createReservation,
   };
 

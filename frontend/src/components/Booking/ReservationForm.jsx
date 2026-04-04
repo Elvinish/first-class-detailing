@@ -8,15 +8,13 @@ import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import { formatDateYMD, startOfToday } from "../../utils/dateFormat";
 import { useMemo } from "react";
+import { usePricing } from "../../hooks/usePricing";
 
 export default function ReservationForm() {
-  const { createReservation, lastReservation } = useBooking();
+  const { createReservation } = useBooking();
+  const { pricing, pricingLoading, pricingError } = usePricing();
 
-  const submitReservation = (formValues) =>
-    createReservation({
-      ...formValues,
-      estimatedTotal: estimatedPrice || undefined,
-    });
+  const submitReservation = (formValues) => createReservation(formValues);
 
   const {
     values,
@@ -48,9 +46,8 @@ export default function ReservationForm() {
     []
   );
 
-  const selectedService = SERVICES.find((s) => s.id === values.service);
-
-  const estimatedPrice = selectedService?.prices?.[values.vehicleType] || null;
+  const estimatedPrice =
+    pricing?.[values.service]?.[values.vehicleType] || null;
 
   return (
     <div className="reservation">
@@ -160,7 +157,13 @@ export default function ReservationForm() {
         >
           <p className="reservation__estimate-label">Estimated Total</p>
           <p className="reservation__estimate-price">
-            {estimatedPrice ? `$${estimatedPrice}` : "Contact for quote"}
+            {pricingLoading
+              ? "Loading..."
+              : pricingError
+              ? "Contact for quote"
+              : estimatedPrice
+              ? `$${estimatedPrice}`
+              : "Contact for quote"}
           </p>
           <p className="reservation__estimate-note">
             Final price may vary based on vehicle condition, pet hair, or
@@ -232,35 +235,11 @@ export default function ReservationForm() {
         </div>
         {submitted && (
           <p className="reservation__success">
-            Thank you! This is a demo — in production this form would send your
-            request to email, WhatsApp or CRM. For now it’s saved locally so you
-            can test the flow.
+            Thank you! Your reservation request has been submitted successfully.
+            We’ll contact you soon to confirm the details.
           </p>
         )}
       </form>
-
-      {lastReservation && (
-        <aside className="reservation__summary">
-          <h3>Last reservation (demo)</h3>
-          <p>
-            <strong>{lastReservation.name}</strong> · {lastReservation.phone}
-            {lastReservation.email && ` · ${lastReservation.email}`}
-          </p>
-          <p>
-            {lastReservation.vehicleType} · {lastReservation.vehicle}
-          </p>
-          <p>
-            Package:{" "}
-            {SERVICES.find((s) => s.id === lastReservation.service)?.name ||
-              lastReservation.service}
-          </p>
-          <p>
-            Preferred: {lastReservation.date}{" "}
-            {lastReservation.time && `at ${to12hLabel(lastReservation.time)}`}
-          </p>
-          {lastReservation.notes && <p>Notes: {lastReservation.notes}</p>}
-        </aside>
-      )}
     </div>
   );
 }
