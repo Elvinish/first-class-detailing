@@ -17,9 +17,9 @@ export async function createReservationService(payload) {
     console.error("[email] failed to send:", err.message);
   });
 
-  sendCustomerConfirmationEmail(saved).catch((err) => {
-    console.error("[email][customer] failed to send:", err.message);
-  });
+  // sendCustomerConfirmationEmail(saved).catch((err) => {
+  //   console.error("[email][customer] failed to send:", err.message);
+  // });
 
   return saved;
 }
