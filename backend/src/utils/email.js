@@ -1,19 +1,13 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Send admin email notification about new booking
 export async function sendBookingEmail(reservation) {
+  const from = process.env.EMAIL_FROM;
   const to = process.env.EMAIL_TO;
 
-  if (!to) {
-    throw new Error("EMAIL_TO is missing in .env");
+  if (!from || !to) {
+    throw new Error("EMAIL_FROM or EMAIL_TO is missing in .env");
   }
 
   const {
@@ -48,18 +42,17 @@ export async function sendBookingEmail(reservation) {
     ${notes ? `<p><strong>Notes:</strong> ${notes}</p>` : ""}
   `;
 
-  await transporter.sendMail({
-    from: process.env.EMAIL_USER,
+  const { error } = await resend.emails.send({
+    from,
     to,
     subject,
     html,
-    replyTo: email || process.env.EMAIL_USER, // 🔥 ключ
+    reply_to: email,
   });
 
-  console.log("[email] sent via Gmail");
-}
+  if (error) {
+    throw new Error(error.message);
+  }
 
-// временно не используем
-export async function sendCustomerConfirmationEmail() {
-  return;
+  console.log("[email] sent via Resend");
 }
